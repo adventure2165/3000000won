@@ -101,20 +101,20 @@ void myturn(int cnt) {
 							else if ((board[i + 5][j] == 1 || board[i + 5][j] == 3)){  //한쪽만 막힌경우1 : 오른쪽
 								x[0] = i - 1;
 								y[0] = j;
-								weight[i - 1][j] = 999999;
+								//eight[i - 1][j] = 999999;
 							}
 							else if ((board[i - 1][j] == 1 || board[i - 1][j] == 3)){ //한쪽만 막힌경우2 : 왼쪽
 								x[0] = i + 5;
 								y[0] = j;
-								weight[i + 5][j] = 999999;
+								//weight[i + 5][j] = 999999;
 							}
 							else{
 								x[0] = i - 1;
 								x[1] = i + 5;
 								y[0] = j;
 								y[1] = j;
-								weight[i + 5][j] = 999999;
-								weight[i - 1][j] = 999999;
+								//weight[i + 5][j] = 999999;
+								//weight[i - 1][j] = 999999;
 							}
 
 						}
@@ -124,21 +124,21 @@ void myturn(int cnt) {
 							else if ((board[i - 2][j] == 1 || board[i - 2][j] == 3)){  //한쪽만 막힌경우1 : 오른쪽
 								x[0] = i + 4;
 								y[0] = j;
-								weight[i + 4][j] = 999999;
+								//weight[i + 4][j] = 999999;
 
 							}
 							else if ((board[i + 4][j] == 1 || board[i + 4][j] == 3)){  //한쪽만 막힌경우2 : 왼쪽
 								x[0] = i - 2;
 								y[0] = j;
-								weight[i - 2][j] = 999999;
+								//weight[i - 2][j] = 999999;
 							}
 							else{
 								x[0] = i - 2;
 								x[1] = i + 4;
 								y[0] = j;
 								y[1] = j;
-								weight[i + 4][j] = 999999;
-								weight[i - 2][j] = 999999;
+								//weight[i + 4][j] = 999999;
+								//weight[i - 2][j] = 999999;
 							}
 
 						}
@@ -147,12 +147,12 @@ void myturn(int cnt) {
 							x[1] = i + 4;
 							y[0] = j;
 							y[1] = j;
-							weight[i + 4][j] = 999999;
-							weight[i - 1][j] = 999999;
+							//weight[i + 4][j] = 999999;
+							//weight[i - 1][j] = 999999;
 							break;
 						}
 					}
-					else if (board[i][j+1] == 2 && board[i][j+2] == 2 && board[i][j+3] == 2) {  ///세로 4개 확인
+					if (board[i][j+1] == 2 && board[i][j+2] == 2 && board[i][j+3] == 2) {  ///세로 4개 확인
 						if ((board[i][j - 1] == 3 || board[i][j - 1] == 1) && (board[i][j + 4] == 3 || board[i][j + 4] == 1)){ //양쪽이 이미 다 막혀있으면 통과
 							continue;
 						}
@@ -174,8 +174,8 @@ void myturn(int cnt) {
 								x[1] = i;
 								y[0] = j - 2;
 								y[1] = j + 4;
-								weight[i][j - 2] = 999999;
-								weight[i][j + 4] = 999999;
+								//weight[i][j - 2] = 999999;
+								//weight[i][j + 4] = 999999;
 							}
 
 						}
@@ -186,12 +186,12 @@ void myturn(int cnt) {
 							else if ((board[i][j - 1] == 3 || board[i][j - 1] == 1)){   //한쪽만 막힌경우1 : 위쪽
 								x[0] = i;
 								y[0] = j + 5;
-								weight[i][j + 5] = 999999;
+								//weight[i][j + 5] = 999999;
 							}
 							else if ((board[i][j + 5] == 3 || board[i][j + 5] == 1)){   //한쪽만 막힌경우2 : 아래쪽
 								x[0] = i;
 								y[0] = j - 1;
-								weight[i][j - 1] = 999999;
+								//weight[i][j - 1] = 999999;
 
 							}
 							else{
@@ -199,8 +199,8 @@ void myturn(int cnt) {
 								x[1] = i;
 								y[0] = j - 1;
 								y[1] = j + 5;
-								weight[i][j - 1] = 999999;
-								weight[i][j + 5] = 999999;
+								//weight[i][j - 1] = 999999;
+								//weight[i][j + 5] = 999999;
 							}
 
 						}
@@ -211,13 +211,13 @@ void myturn(int cnt) {
 							x[1] = i;
 							y[0] = j - 1;
 							y[1] = j + 4;
-							weight[i][j - 1] = 999999;
-							weight[i][j + 4] = 999999;
+							//weight[i][j - 1] = 999999;
+							//weight[i][j + 4] = 999999;
 							break;
 						}
 
 					}
-					else if (board[i - 1 ][j + 1] == 2 && board[i - 2][j + 2] == 2 && board[i - 3][j + 3] == 2) {  /// /방향 4개 확인
+					if (board[i - 1 ][j + 1] == 2 && board[i - 2][j + 2] == 2 && board[i - 3][j + 3] == 2) {  /// /방향 4개 확인
 						if ((board[i + 1][j - 1] == 3 || board[i + 1][j - 1] == 1) && (board[i - 4][j + 4] == 3 || board[i - 4][j + 4] == 1)){//양쪽이 이미 다 막혀있으면 통과
 							continue;
 						}
@@ -229,21 +229,21 @@ void myturn(int cnt) {
 							else if ((board[i + 2][j - 2] == 3 || board[i + 2][j - 2] == 1)){   //한쪽만 막힌경우1 : 위쪽
 								x[0] = i - 4;
 								y[0] = j + 4;
-								weight[i - 4][j + 4] = 999999;
+								//weight[i - 4][j + 4] = 999999;
 
 							}
 							else if ((board[i - 4][j + 4] == 3 || board[i - 4][j + 4] == 1)){   //한쪽만 막힌경우2 : 아래쪽
 								x[0] = i + 2;
 								y[0] = j - 2;
-								weight[i + 2][j - 2] = 999999;
+								//weight[i + 2][j - 2] = 999999;
 							}
 							else{
 								x[0] = i + 2;
 								x[1] = i - 4;
 								y[0] = j - 2;
 								y[1] = j + 4;
-								weight[i + 2][j - 2] = 999999;
-								weight[i - 4][j + 4] = 999999;
+								//weight[i + 2][j - 2] = 999999;
+								//weight[i - 4][j + 4] = 999999;
 								break;
 							}
 
@@ -255,20 +255,20 @@ void myturn(int cnt) {
 							else if ((board[i + 1][j - 1] == 3 || board[i + 1][j - 1] == 1)){  //한쪽만 막힌경우1 : 위쪽
 								x[0] = i - 5;
 								y[0] = j + 5;
-								weight[i - 5][j + 5] = 999999;
+								//weight[i - 5][j + 5] = 999999;
 							}
 							else if ((board[i - 5][j + 5] == 3 || board[i - 5][j + 5] == 1)){  //한쪽만 막힌경우2 : 아래쪽
 								x[0] = i + 1;
 								y[0] = j - 1;
-								weight[i + 1][j - 1] = 999999;
+								//weight[i + 1][j - 1] = 999999;
 							}
 							else{
 								x[0] = i + 1;
 								x[1] = i - 5;
 								y[0] = j - 1;
 								y[1] = j + 5;
-								weight[i + 1][j - 1] = 999999;
-								weight[i - 5][j + 5] = 999999;
+								//weight[i + 1][j - 1] = 999999;
+								//weight[i - 5][j + 5] = 999999;
 								break;
 							}
 
@@ -279,13 +279,13 @@ void myturn(int cnt) {
 							x[1] = i - 4;
 							y[0] = j - 1;
 							y[1] = j + 4;
-							weight[i + 1][j - 1] = 999999;
-							weight[i - 4][j + 4] = 999999;
+							//weight[i + 1][j - 1] = 999999;
+							//weight[i - 4][j + 4] = 999999;
 							break;
 						}
 
 					}
-					else if (board[i+1][j + 1] == 2 && board[i+2][j + 2] == 2 && board[i+3][j + 3] == 2) {  /// \방향 4개 확인
+					if (board[i+1][j + 1] == 2 && board[i+2][j + 2] == 2 && board[i+3][j + 3] == 2) {  /// \방향 4개 확인
 						if ((board[i - 1][j - 1] == 3 || board[i - 1][j - 1] == 1) && (board[i + 4][j + 4] == 3 || board[i + 4][j + 4] == 1)){   //양쪽이 이미 다 막혀있으면 통과
 							continue;
 						}
@@ -296,21 +296,21 @@ void myturn(int cnt) {
 							else if ((board[i - 2][j - 2] == 3 || board[i - 2][j - 2] == 1)){
 								x[0] = i + 4;
 								y[0] = j + 4;
-								weight[i + 4][j + 4] = 999999;
+								//weight[i + 4][j + 4] = 999999;
 							}
 
 							else if ((board[i + 4][j + 4] == 3 || board[i + 4][j + 4] == 1)){
 								x[0] = i - 2;
 								y[0] = j - 2;
-								weight[i - 2][j - 2] = 999999;
+								//weight[i - 2][j - 2] = 999999;
 							}
 							else{
 								x[0] = i - 2;
 								x[1] = i + 4;
 								y[0] = j - 2;
 								y[1] = j + 4;
-								weight[i - 2][j - 2] = 999999;
-								weight[i + 4][j + 4] = 999999;
+								//weight[i - 2][j - 2] = 999999;
+								//weight[i + 4][j + 4] = 999999;
 								break;
 							}
 
@@ -322,21 +322,21 @@ void myturn(int cnt) {
 							else if ((board[i - 1][j - 1] == 3 || board[i - 1][j - 1] == 1)){
 								x[0] = i + 5;
 								y[0] = j + 5;
-								weight[i + 5][j + 5] = 999999;
+								//weight[i + 5][j + 5] = 999999;
 							}
 
 							else if ((board[i + 5][j + 5] == 3 || board[i + 5][j + 5] == 1)){
 								x[0] = i - 1;
 								y[0] = j - 1;
-								weight[i - 1][j - 1] = 999999;
+								//weight[i - 1][j - 1] = 999999;
 							}
 							else{
 								x[0] = i - 1;
 								x[1] = i + 5;
 								y[0] = j - 1;
 								y[1] = j + 5;
-								weight[i - 1][j - 1] = 999999;
-								weight[i + 5][j + 5] = 999999;
+								//weight[i - 1][j - 1] = 999999;
+								//weight[i + 5][j + 5] = 999999;
 								break;
 							}
 						}
@@ -346,8 +346,8 @@ void myturn(int cnt) {
 							x[1] = i + 4;
 							y[0] = j - 1;
 							y[1] = j + 4;
-							weight[i - 1][j - 1] = 999999;
-							weight[i + 4][j + 4] = 999999;
+							//weight[i - 1][j - 1] = 999999;
+							//weight[i + 4][j + 4] = 999999;
 							break;
 						}
 
@@ -364,7 +364,7 @@ void myturn(int cnt) {
 				
 		}  
 
-		int flags = 0;
+		/*int flags = 0;
 		for (int i = 1; i < 20; i++){
 			for (int j = 1; j < 20; j++){
 				if (weight[i][j] > 0){
@@ -384,7 +384,7 @@ void myturn(int cnt) {
 			}
 		}
 		flags = 0;
-		
+		*/
 
 		/*
 		1. 일단 각 모든 판을 서치해본다.
@@ -438,17 +438,87 @@ int (*getBoard(void))[20] {
 }
 
 
-/*int* findbestmove(int arr[][20]){
+
+////////////신경 안써도 됨 임시임
+int *findbestmove(int arr[20][20]) {
 	static int move[2];
-	int max1 = 0;
+	//int *edge = findEdgemoves();
+	return move;
+}
+
+
+/*int *findEdgemoves() {				//말들이 놓여있는 위치 기준 +3까지의 사각형을 검색
+	int edge[4];
+	int flag1 = 0;
+	int flag2 = 0;
 	for (int i = 0; i < 20; i++) {
-		for (int j = 0; j < 20; j++) {
-			if (arr[i][j] >= max1) {
-				max1 = arr[i][j];
-				move[0] = i;
-				move[1] = j;
+		for (int j = 0; j < 20; j++) {				//왼쪽 상위 맨 끝 놓여져있는 돌을 기준으로 +3의 사각형의 위쪽두변 Γ
+			if (showBoard(i, j) == 1 || showBoard(i, j) == 2) {
+				if (i < 3 && j < 3) {
+					edge[0] = 0;
+					edge[1] = 0;
+					flag1 = 1;
+					break;
+				}
+				else if (i < 3) {
+					edge[0] = 0;
+					edge[1] = j - 3;
+					flag1 = 1;
+					break;
+				}
+				else if (j < 3) {
+					edge[0] = i - 3;
+					edge[1] = 0;
+					flag1 = 1;
+					break;
+				}
+				else {
+					edge[0] = i - 3;
+					edge[1] = j - 3;
+					flag1 = 1;
+					break;
+				}
 			}
+			if (flag1 == 1) {
+				break;
+			}
+
 		}
 	}
-	return move;
+
+		for (int i = 19; i >= 0; i++) {			 //왼쪽 상위 맨 끝 놓여져있는 돌을 기준으로 +3의 사각형의 아래쪽두변 ┘
+			for (int j = 19; j >= 0; j++) {
+				if (showBoard(i, j) == 1 || showBoard(i, j) == 2) {
+					if (i > 16 && j > 16) {
+						edge[2] = 19;
+						edge[3] = 19;
+						flag2 = 1;
+						break;
+					}
+					else if (i > 16) {
+						edge[2] = 19;
+						edge[3] = j + 3;
+						flag2 = 1;
+						break;
+					}
+					else if (j > 16) {
+						edge[2] = i + 3;
+						edge[3] = 19;
+						flag2 = 1;
+						break;
+					}
+					else {
+						edge[2] = i + 3;
+						edge[3] = j + 3;
+						flag2 = 1;
+						break;
+					}
+				}
+				if (flag2 == 1) {
+					break;
+				}
+
+			}
+		}
+		return edge;
 }*/
