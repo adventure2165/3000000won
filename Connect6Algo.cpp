@@ -1,5 +1,5 @@
 // Samsung Go Tournament Form C Connect6Algo (g++-4.8.3)
-
+//이게 수정파일
 // <--------------- 이 Code를 수정하면  작동하지 않을 수 있습니다 ------------------>
 
 #include <Windows.h>
@@ -17,7 +17,7 @@ int myColor;
 
 static char cmd[256];
 static HANDLE event1, event2;
-#define BOARD_SIZE 20
+#define BOARD_SIZE 19
 int board[BOARD_SIZE][BOARD_SIZE];
 
 static void getLine() {
@@ -50,17 +50,15 @@ static const char *getParam(const char *command, const char *input) {
 	n2 = (int)strlen(input);
 	if (n1 > n2 || _strnicmp(command, input, n1)) return NULL;
 	input += strlen(command);
-	while (isspace(input[0])) input++;	
+	while (isspace(input[0])) input++;
 	return input;
 }
 
-//stop time count
 static void stop() {
 	terminateAI = 1;
 	WaitForSingleObject(event2, INFINITE);
 }
 
-//start time count
 static void start() {
 	s_time = GetTickCount();
 	stop();
@@ -72,16 +70,14 @@ static void turn() {
 	SetEvent(event1);
 }
 
-//this function called our code.
 void domymove(int x[], int y[], int cnt) {
 	mymove(x, y, cnt);
-	if (cnt == 1)	
+	if (cnt == 1)
 		setLine("%d,%d", x[0], y[0]);
 	else
 		setLine("%d,%d %d,%d", x[0], y[0], x[1], y[1]);
 }
 
-//print board
 int showBoard(int x, int y) {
 	return board[x][y];
 }
@@ -114,14 +110,14 @@ static void doCommand() {
 				}
 			}
 			cnt = 2;
-			opmove(x, y, r / 2);	
+			opmove(x, y, r / 2);
 			turn();
 		}
 	}
 	else if ((param = getParam("INFO", cmd)) != 0) {
 		setLine("%s", info);
 	}
-	else if ((param = getParam("BLOCK", cmd)) != 0) {	
+	else if ((param = getParam("BLOCK", cmd)) != 0) {
 		int x, y;
 		if (((sscanf_s(param, "%d,%d", &x, &y)) == 2)) {
 			block(x, y);
@@ -133,17 +129,15 @@ static void doCommand() {
 	}
 }
 
-static DWORD WINAPI threadLoop(LPVOID) {	
+static DWORD WINAPI threadLoop(LPVOID) {
 	while (1) {
 		WaitForSingleObject(event1, INFINITE);
 		myturn(cnt);
-		if (cnt == 1) cnt = 2;	
+		if (cnt == 1) cnt = 2;
 		SetEvent(event2);
 	}
 }
 
-//main function
-//If you execute this program in console, print alert message.
 int main() {
 	DWORD mode;
 	if (GetConsoleMode(GetStdHandle(STD_INPUT_HANDLE), &mode))
@@ -162,14 +156,12 @@ int main() {
 	return 0;
 }
 
-//Can we put on this position?
 int isFree(int x, int y)
 {
 	return x >= 0 && y >= 0 && x < width && y < height && board[x][y] == 0;
 }
 
-//init board
-void init() {	
+void init() {
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < height; j++) {
 			board[i][j] = 0;
@@ -178,7 +170,6 @@ void init() {
 	setLine("OK");
 }
 
-//we puts on
 void mymove(int x[], int y[], int cnt) {
 	for (int i = 0; i < cnt; i++) {
 		if (isFree(x[i], y[i])) {
@@ -190,7 +181,6 @@ void mymove(int x[], int y[], int cnt) {
 	}
 }
 
-//opposition puts on
 void opmove(int x[], int y[], int cnt) {
 	for (int i = 0; i < cnt; i++) {
 		if (isFree(x[i], y[i])) {
@@ -202,7 +192,6 @@ void opmove(int x[], int y[], int cnt) {
 	}
 }
 
-//we cannot put on this position.
 void block(int x, int y) {
 	if (isFree(x, y)) {
 		board[x][y] = 3;
